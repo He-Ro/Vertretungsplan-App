@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical">
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:orientation="horizontal"
+	  	android:background="@drawable/my_widget_titel"
+	  		android:layout_marginBottom="0dp"
+	  		android:layout_marginTop="3dp"
+	  		android:layout_marginLeft="2dp"
+	  		android:layout_marginRight="2dp">
+
+        <ImageView
+            android:id="@+id/icon"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:alpha="0.8"
+            android:contentDescription="@+string/app_name"
+            android:paddingLeft="0dp"
+            android:paddingRight="0dp"
+            android:src="@drawable/ic_launcher" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="4"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/textTitel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="0dp"
+                android:layout_marginLeft="1dp"
+                android:layout_marginTop="0dp"
+                android:gravity="left|center_horizontal|center_vertical"
+                android:paddingBottom="0dp"
+                android:textColor="#ffffff"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <TextView
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/textUntertitel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="0dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="0dp"
+                android:gravity="left|top"
+                android:paddingTop="0dp"
+                android:textColor="#ffffff"
+                android:textSize="10sp" />
+
+        </LinearLayout>
+
+        <!--  <ViewSwitcher
+            android:id="@+id/viewSwitcher1"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" > -->
+
+            <ImageView
+                android:id="@+id/aktButton"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:alpha="0.8"
+                android:clickable="true"
+                android:contentDescription="@+string/aktualisieren"
+                android:longClickable="false"
+                android:src="@drawable/aktualisieren_drawable" />
+
+       <!--      <ProgressBar
+                android:id="@+id/progressBar1"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent" />
+
+        </ViewSwitcher> -->
+
+	</LinearLayout>
+
+	<ListView
+	    xmlns:android="http://schemas.android.com/apk/res/android"
+	    android:id="@+id/words"
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent"
+	    android:layout_marginBottom="7dp"
+	    android:layout_marginLeft="7dp"
+	    android:layout_marginRight="7dp"
+	    android:layout_marginTop="0dp"
+	    android:background="@drawable/my_widget_body"
+	    android:clickable="false"
+	    android:drawSelectorOnTop="false" />
+
+</LinearLayout>

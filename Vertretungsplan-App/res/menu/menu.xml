@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/menu_aktualisieren"
+          android:icon="@drawable/ic_action_aktualisieren"
+          android:title="@+string/aktualisieren"
+          android:showAsAction="always"
+          />
+    <item android:id="@+id/menu_open_web"
+          android:icon="@drawable/ic_menu_open_web"
+          android:title="@+string/onlineV_Plan"
+          android:showAsAction="never"
+          />
+    <item android:id="@+id/preferences_button"
+          android:icon="@drawable/ic_menu_preferences"
+          android:title="@string/menu_preferences"
+          android:showAsAction="never|collapseActionView"
+          />
+</menu>

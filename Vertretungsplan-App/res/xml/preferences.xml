@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Dies ist das Layout für die Optionen, weitere Informationen:
+	 https://developer.android.com/guide/topics/ui/settings.html -->
+
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <CheckBoxPreference
+        android:key="prefs_akt_on_start"
+        android:title="Automatisches Aktualisieren"
+        android:summary="Beim Starten der App wird der Vertretungsplan sofort aktualisiert."
+        android:defaultValue="false" />  
+        
+    <CheckBoxPreference
+        android:key="prefs_check_for_app_updates"
+        android:title="Über App-Updates benachrichtigen"
+        android:summary="Ein Mal pro Woche die Aktualität der App überprüfen und gegebenenfalls benachrichtigen."
+        android:defaultValue="true" />  
+    <PreferenceCategory android:title="Filter">
+	    <Preference 
+	        android:key="prefs_klasse"
+	        android:title="Meine Klasse"
+	        android:summary="Die ausgewählten Klassen werden im Vertretungsplan hervorgehoben.">
+	    </Preference>
+    </PreferenceCategory>
+    <PreferenceCategory android:title="Benachrichtigungen">
+	    <CheckBoxPreference
+	        android:key="prefs_benachrichtigungen"
+	        android:title="Benachrichtigungen aktivieren"
+	        android:defaultValue="false" />
+	    <ListPreference 
+	        android:key="prefs_benachrichtigungsintervall"
+	        android:title="Aktualisierungsintervall"
+	        android:entries="@array/str_intervalle"
+	        android:entryValues="@array/val_intervalle"
+	        android:defaultValue="1"
+	        android:dependency="prefs_benachrichtigungen"/>
+    </PreferenceCategory>
+	<PreferenceCategory android:title="Sonstiges">
+	    <Preference 
+	        android:key="ueber"
+	        android:title="Über"
+	    	android:summary="Version, Credits, ...">
+	    </Preference>
+	        
+	    <CheckBoxPreference
+	        android:key="prefs_debug"
+	        android:title="Debugging aktivieren"
+	        android:summary="Sollte nicht benutzt werden\nSynkronisieren einer nicht aktuellen Liste"
+	        android:defaultValue="false" />  
+    </PreferenceCategory>
+</PreferenceScreen>

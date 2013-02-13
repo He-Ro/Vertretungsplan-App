@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Hier sind alle String-Resources aufgelistet, wie man sie benutzt steht hier:
+	 https://developer.android.com/guide/topics/resources/string-resource.html -->
+
+<resources>
+
+    
+    
+    <string name="version_nr">0.3</string>
+    <string name="app_name">Vertretungsplan</string>
+    <string name="menu_settings">Settings</string>
+    <string name="menu_preferences">Optionen</string>
+    <string name="aktualisieren">Aktualisieren</string>
+    <string name="zuletztAktualisiertAm">Zuletzt aktualisiert am</string>
+    <string name="ueber">Über</string>
+    <string name="ueberTextFormated">Vertretungsplan v%s beta\nEntwickelt von Hendrik Rosendahl \n\nAlle Angaben sind ohne Gewähr!</string>
+    <string name="debugTitel">Achtung!</string>
+    <string name="debugText">Du verwendest jetzt den Debug-Mode.\nDieser ist nicht für die normale Benutzung geeignet.</string>
+    <string name="klassenAuswaehlen">Klassen auswählen</string>
+    <string name="ok">OK</string>
+    <string name="abbrechen">Abbrechen</string>
+    <string name="halbstuendlich">Halbstündlich</string>
+    <string name="stuendlich">Stündlich</string>
+    <string name="alleDreiStunden">Alle Drei Stunden</string>
+    <string name="alleSechsStunden">Alle Sechs Stunden</string>
+    <string name="neuerV_Plan">Neuer V-Plan</string>
+    <string name="aktualisierterV_Plan">Aktualisierter V-Plan</string>
+    <string name="planFuerDen">Plan für den: </string>
+    <string name="onlineV_Plan">Online V-Plan</string>
+    
+    <string name="filename">hashmapList</string>
+    <string name="preferencesName">aktualisiertFilename</string>
+    <string name="aktualisiertKey">aktualisiertKey</string>
+    <string name="aktualisierungsTextKey">aktualisierungsTextKey</string>
+    <string name="dialog_klasse">dialog_klasse</string>
+    <string name="klasse_set">klasse_set</string>
+    <string name="v_plan_hash_value">intHashValue</string>
+    <string name="debug_htmlAdresse">https://dl.dropbox.com/u/60551363/test.html</string>
+    <string name="htmlAdresse">http://www.gymnasium-sankt-michael.de/vertretungsplan/vertretungsplan.html</string> <!-- Wird zur Datenerhebung verwendet -->
+	<string name="webAdresse">http://www.gymnasium-sankt-michael.de/vertretungsplan/vertretungsplan.html</string> <!-- Wird im Browser aufgerufen -->
+	<string name="htmlAdresseAktuelleVersion">https://dl.dropbox.com/u/60551363/vertretungsplan_version.txt</string>
+	<string name="webAdresseAppDownload">https://www.box.com/s/pcd1ibfei27f6mdat7lh</string>
+</resources>

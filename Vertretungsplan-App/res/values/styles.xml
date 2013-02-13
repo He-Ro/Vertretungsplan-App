@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Dies ist der Style, der von der ganzen App genutzt wird.
+	 Es ist ein helles Theme mit einer dunkelroten Schrift, 
+	 wie es auf http://www.gymnasium-sankt-michael.de/ zu finden ist
+	 (Falls es nicht dunkelrot ist einfach ändern, ich hab es nicht so mit Farben ;) -->
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+    <color name="custom_theme_color">#98023B</color>
+<style name="CustomTheme" parent="android:Theme.Light.NoTitleBar">
+    
+    <item name="android:textColor">@drawable/text_color</item>  
+   
+</style>
+</resources>

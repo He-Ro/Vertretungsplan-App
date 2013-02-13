@@ -1,0 +1,24 @@
+# view AndroidManifest.xml #generated:34
+-keep class de.hero.vertretungsplan.CheckForAppUpdate { <init>(...); }
+
+# view AndroidManifest.xml #generated:32
+-keep class de.hero.vertretungsplan.CheckForUpdates { <init>(...); }
+
+# view AndroidManifest.xml #generated:21
+-keep class de.hero.vertretungsplan.MainActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:49
+-keep class de.hero.vertretungsplan.OnBoot { <init>(...); }
+
+# view AndroidManifest.xml #generated:30
+-keep class de.hero.vertretungsplan.PrefsActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:36
+-keep class de.hero.vertretungsplan.WidgetProvider { <init>(...); }
+
+# view AndroidManifest.xml #generated:46
+-keep class de.hero.vertretungsplan.WidgetService { <init>(...); }
+
+# view AndroidManifest.xml #generated:33
+-keep class de.hero.vertretungsplan.WidgetUpdate { <init>(...); }
+
