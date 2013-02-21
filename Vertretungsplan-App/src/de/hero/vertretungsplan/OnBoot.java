@@ -1,5 +1,10 @@
 package de.hero.vertretungsplan;
 
+/**
+ * Diese Klasse wird beim Hochfahren des Android-Smartphones aufgerufen.
+ * Es setzt verschiedene Timer, falls diese eingeschaltet sind.
+ */
+
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.ContextWrapper;

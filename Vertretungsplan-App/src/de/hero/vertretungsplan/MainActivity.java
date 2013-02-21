@@ -1,12 +1,15 @@
 package de.hero.vertretungsplan;
 
+/**
+ * Dies ist die Activity des Hauptbildschirms. Es ist eine ListActivity, da die Liste das zentrale Element
+ * dieses Bildschirmes ist.
+ */
+
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.StreamCorruptedException;
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

@@ -1,9 +1,9 @@
 package de.hero.vertretungsplan;
 
 /**
- * HtmlWork ist zur die zentrale Klasse, welche den Vertretungsplan von 
+ * HtmlWork ist die zentrale Klasse, welche den Vertretungsplan von 
  * http://www.gymnasium-sankt-michael.de/vertretungsplan/vertretungsplan.html
- * herunterlädt und extrahiert die Tabelle, speichert sie und schaut, ob sie sich verändert hat.
+ * herunterlädt und die Tabelle extrahiert, speichert sie und überprüft, ob sie sich verändert hat.
  * 
  * Zu erwähnen ist, dass es sich hierbei um einen AsyncTask handelt.
  * Dies wird von Android gefordert, damit die App flüssig läuft.

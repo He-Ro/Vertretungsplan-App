@@ -1,5 +1,10 @@
 package de.hero.vertretungsplan;
 
+/**
+ * Diese Klasse bewirkt, dass die der Hintergrund der Einträge hervorgehoben wird, die 
+ * in den Optionen unter Klassen eingetragen sind.
+ */
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Set;

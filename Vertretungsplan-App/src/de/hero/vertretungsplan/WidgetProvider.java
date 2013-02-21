@@ -22,8 +22,6 @@ public class WidgetProvider extends AppWidgetProvider {
       svcIntent.setData(Uri.parse(svcIntent.toUri(Intent.URI_INTENT_SCHEME)));
       RemoteViews widget=new RemoteViews(context.getPackageName(), R.layout.widget);
       Intent intent = new Intent(context, de.hero.vertretungsplan.WidgetUpdate.class);
-      //for debugging
-      //Intent intent = new Intent(context, de.hero.vertretungsplan.CheckForUpdates.class);
 	  PendingIntent pi = PendingIntent.getService(context, 0, intent, 0);
       widget.setOnClickPendingIntent(R.id.aktButton, pi);
       Intent startIntent = new Intent(context, MainActivity.class);
