@@ -1,0 +1,2 @@
+# Dies ist die Versionsnummer der aktuellen Vertretungsplan Anroid-App
+5
