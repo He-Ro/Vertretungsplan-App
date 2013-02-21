@@ -64,7 +64,7 @@ public class MainActivity extends ListActivity {
         	   LayoutInflater lInflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         	   mRefreshIndeterminateProgressView = lInflater.inflate(R.layout.actionbar_indeterminate_progress, null);
         	   refreshItem = menu.findItem(R.id.menu_aktualisieren);
-        	   Log.i("MainActivity","onCreateOptionsMenu: refreshItem created");
+        	   Log.d("MainActivity","onCreateOptionsMenu: refreshItem created");
         	}
     	}
 	    return true;
@@ -155,7 +155,7 @@ public class MainActivity extends ListActivity {
 		AlarmManager am =  (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
 
 		am.cancel(pi); // cancel any existing alarms
-		Log.i("MainActivity","cancelAlarm");
+		Log.d("MainActivity","cancelAlarm");
 		if (set) {
 			
 			long lngInterval = AlarmManager.INTERVAL_HOUR * 3;
@@ -168,7 +168,7 @@ public class MainActivity extends ListActivity {
 			} else if (interval.equals("6")) {
 				lngInterval = AlarmManager.INTERVAL_HALF_DAY / 2;
 			}
-			Log.i("MainActivity","setAlarm " + interval + " Stunden");
+			Log.d("MainActivity","setAlarm " + interval + " Stunden");
 			am.setInexactRepeating(AlarmManager.ELAPSED_REALTIME, SystemClock.elapsedRealtime() + AlarmManager.INTERVAL_HALF_HOUR / 3, lngInterval, pi);
 			//For debugging after 10 seconds
 			//am.setRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP, SystemClock.elapsedRealtime() + 25000 , AlarmManager.INTERVAL_HOUR , pi);

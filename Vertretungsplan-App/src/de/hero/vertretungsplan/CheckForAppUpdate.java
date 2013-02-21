@@ -50,11 +50,11 @@ public class CheckForAppUpdate extends Service{
 		AlarmManager am =  (AlarmManager) getSystemService(Context.ALARM_SERVICE);
 
 		am.cancel(pi);
-		Log.i("CheckForAppUpdate","Alarm canceled");
+		Log.d("CheckForAppUpdate","Alarm canceled");
 		if (setTimer) {
 			
 			long lngInterval = AlarmManager.INTERVAL_DAY * 7;
-			Log.i("CheckForAppUpdate","Alarm set");
+			Log.d("CheckForAppUpdate","Alarm set");
 			am.setInexactRepeating(AlarmManager.ELAPSED_REALTIME, SystemClock.elapsedRealtime() + AlarmManager.INTERVAL_DAY * 6, lngInterval, pi);
 			//For debugging: after 10 seconds
 			//am.setRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP, SystemClock.elapsedRealtime() + 25000 , AlarmManager.INTERVAL_HOUR , pi);

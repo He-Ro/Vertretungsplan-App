@@ -123,7 +123,7 @@ public class PrefsActivity extends PreferenceActivity {
 			
 			public boolean onPreferenceChange(Preference preference, Object newValue) {
 				if (preference.getKey().equals("prefs_debug")) {
-					Log.i("PrefsActivity","new");
+					Log.d("PrefsActivity","new");
 					if (!((CheckBoxPreference) preference).isChecked()) {
 						AlertDialog.Builder builder = new AlertDialog.Builder(preference.getContext());
 

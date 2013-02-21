@@ -31,7 +31,7 @@ public class WidgetViewsFactory implements RemoteViewsService.RemoteViewsFactory
 	}
 
 	public void onCreate() {
-		Log.i("WidgetViewsFactory", "onCreate");
+		Log.d("WidgetViewsFactory", "onCreate");
 		lstEintraege = getListe();
 	}
 
@@ -87,7 +87,7 @@ public class WidgetViewsFactory implements RemoteViewsService.RemoteViewsFactory
 	public void onDataSetChanged() {
 
 		lstEintraege = getListe();
-		Log.i("WidgetViewsFactory", "onDataSetChanged()");
+		Log.d("WidgetViewsFactory", "onDataSetChanged()");
 		SharedPreferences prefs = context.getSharedPreferences(
 				context.getString(R.string.preferencesName), 0);
 		String strAktualisierungsText = prefs.getString(
@@ -135,7 +135,7 @@ public class WidgetViewsFactory implements RemoteViewsService.RemoteViewsFactory
 
 	private void checkListe() {
 		if (lstEintraege == null) {
-			Log.i("WidgetViewsFactory", "checkListe()");
+			Log.d("WidgetViewsFactory", "checkListe()");
 			lstEintraege = getListe();
 		}
 	}

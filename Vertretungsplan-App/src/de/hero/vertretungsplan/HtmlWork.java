@@ -51,7 +51,7 @@ public class HtmlWork extends AsyncTask<URI,Void,StringBuffer> {
 	
 	public HtmlWork(Context pContext) {
 		context = pContext;
-		Log.i("HtmlWork","Construktor");
+		Log.d("HtmlWork","Construktor");
 		ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
 
         if (cm.getActiveNetworkInfo() != null && cm.getActiveNetworkInfo().isConnected()) {
@@ -86,7 +86,7 @@ public class HtmlWork extends AsyncTask<URI,Void,StringBuffer> {
 		String dateString = context.getString(R.string.zuletztAktualisiertAm) + " " + fmt.format(date);
 		
         SharedPreferences.Editor editor = aktualisieren.edit();
-        Log.i("jetzt",dateString);
+        Log.d("jetzt",dateString);
         editor.putString(context.getString(R.string.aktualisiertKey), dateString);
 		editor.commit();
 		
@@ -170,7 +170,7 @@ public class HtmlWork extends AsyncTask<URI,Void,StringBuffer> {
 		int month = dat.getMonth() + 1;
     	
 		String strAktualisierungsText =  ((date < 10) ? "0" + date : date)  + "." + ((month < 10) ? "0" + month : month) + "." + (dat.getYear() + 1900) + " - " + strHtml.substring(strHtml.indexOf("<td>") + 4,strHtml.indexOf("</td"));
-        Log.i("HtmlWork",strAktualisierungsText);
+        Log.d("HtmlWork",strAktualisierungsText);
 	    SharedPreferences prefs = context.getSharedPreferences(context.getString(R.string.preferencesName), 0);
         SharedPreferences.Editor editor = prefs.edit();
         editor.putString(context.getString(R.string.aktualisierungsTextKey), strAktualisierungsText);
@@ -255,7 +255,7 @@ public class HtmlWork extends AsyncTask<URI,Void,StringBuffer> {
 	    editor.putInt(context.getString(R.string.v_plan_hash_value), newHash);
 	    editor.commit();
 
-		Log.i("HtmlWork","oldHash: " + oldHash + "; newHash: " + newHash);
+		Log.d("HtmlWork","oldHash: " + oldHash + "; newHash: " + newHash);
 		if (oldHash != newHash) {
 			onDataChange();
 		}

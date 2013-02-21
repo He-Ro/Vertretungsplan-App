@@ -39,7 +39,7 @@ public class CheckForUpdates extends Service {
 		
 		public HtmlWorkAndNotify(Context pContext) {
 			super(pContext);
-			Log.i("HtmlWorkAndNotify","Construktor");
+			Log.d("HtmlWorkAndNotify","Construktor");
 			context = pContext;
 		}
 
