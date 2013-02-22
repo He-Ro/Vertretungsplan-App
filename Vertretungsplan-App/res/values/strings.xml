@@ -36,9 +36,9 @@
     <string name="dialog_klasse">dialog_klasse</string>
     <string name="klasse_set">klasse_set</string>
     <string name="v_plan_hash_value">intHashValue</string>
-    <string name="debug_htmlAdresse">https://dl.dropbox.com/u/60551363/test.html</string>
+    <string name="debug_htmlAdresse">http://raw.github.com/He-Ro/Vertretungsplan-App/master/debug-webseite.html</string>
     <string name="htmlAdresse">http://www.gymnasium-sankt-michael.de/vertretungsplan/vertretungsplan.html</string> <!-- Wird zur Datenerhebung verwendet -->
 	<string name="webAdresse">http://www.gymnasium-sankt-michael.de/vertretungsplan/vertretungsplan.html</string> <!-- Wird im Browser aufgerufen -->
-	<string name="htmlAdresseAktuelleVersion">https://dl.dropbox.com/u/60551363/vertretungsplan_version.txt</string>
+	<string name="htmlAdresseAktuelleVersion">http://raw.github.com/He-Ro/Vertretungsplan-App/master/vertretungsplan_version.txt</string>
 	<string name="webAdresseAppDownload">https://www.box.com/s/pcd1ibfei27f6mdat7lh</string>
 </resources>
