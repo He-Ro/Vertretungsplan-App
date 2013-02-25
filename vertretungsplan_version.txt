@@ -1,2 +1,2 @@
-# Dies ist die Versionsnummer der aktuellen Vertretungsplan Anroid-App
+# Dies ist die Versionsnummer der aktuellen Vertretungsplan Android-App
 5
