@@ -14,7 +14,7 @@
     <string name="aktualisieren">Aktualisieren</string>
     <string name="zuletztAktualisiertAm">Zuletzt aktualisiert am</string>
     <string name="ueber">Über</string>
-    <string name="ueberTextFormated">Vertretungsplan v%s beta\nEntwickelt von Hendrik Rosendahl \n\nAlle Angaben sind ohne Gewähr!</string>
+    <string formatted="false" name="ueberTextFormated">Vertretungsplan v%s beta\nEntwickelt von Hendrik Rosendahl \n%s \n\nAlle Angaben sind ohne Gewähr!</string><!--  erstes %s: version_nr ; zweites %s: webAdresseAppDownload -->
     <string name="debugTitel">Achtung!</string>
     <string name="debugText">Du verwendest jetzt den Debug-Mode.\nDieser ist nicht für die normale Benutzung geeignet.</string>
     <string name="klassenAuswaehlen">Klassen auswählen</string>
@@ -40,5 +40,5 @@
     <string name="htmlAdresse">http://www.gymnasium-sankt-michael.de/vertretungsplan/vertretungsplan.html</string> <!-- Wird zur Datenerhebung verwendet -->
 	<string name="webAdresse">http://www.gymnasium-sankt-michael.de/vertretungsplan/vertretungsplan.html</string> <!-- Wird im Browser aufgerufen -->
 	<string name="htmlAdresseAktuelleVersion">http://raw.github.com/He-Ro/Vertretungsplan-App/master/vertretungsplan_version.txt</string>
-	<string name="webAdresseAppDownload">https://www.box.com/s/pcd1ibfei27f6mdat7lh</string>
+	<string name="webAdresseAppDownload">http://he-ro.github.com/Vertretungsplan-App</string>
 </resources>
