@@ -292,7 +292,7 @@ Full-Width Styles
   z-index: 10;
   padding: 10px 50px 10px 10px;
   color: #fff;
-  background: url('../images/github_cat.svg') #98023B no-repeat 95% 50%;
+  background: url('../images/blacktocat.png') #98023B no-repeat 95% 50%;
   font-weight: 700;
   box-shadow: 0 0 10px rgba(0,0,0,.5);
   border-bottom-left-radius: 2px;
@@ -330,21 +330,17 @@ Full-Width Styles
 
 #downloads {
   position: absolute;
-  width: 240px;
-  text-indent: 18px;
+  width: 110px;
   z-index: 10;
-  bottom: -50px;
+  bottom: -40px;
   right: 10px;
-  height: 50px;
-  background: url('../images/icon_download.svg') no-repeat 0 0;
-  background-position:  0px 3px;
+  height: 70px;
+  background: url('../images/icon_download.png') no-repeat 0% 90%;
 }
 
 .apk_download_link {
   display: block;
-  position: absolute;
-  right:10px;
-  bottom: 10px;
+  float: right;
   width: 90px;
   height:70px;
   color:rgba(0,0,0,0);
