@@ -32,7 +32,9 @@
     <string name="aktualisieren">Aktualisieren</string>
     <string name="zuletztAktualisiertAm">Zuletzt aktualisiert am</string>
     <string name="ueber">Über</string>
-    <string formatted="false" name="ueberTextFormated">Vertretungsplan v%s beta\nEntwickelt von Hendrik Rosendahl \n%s \n\nAlle Angaben sind ohne Gewähr!</string><!--  erstes %s: version_nr ; zweites %s: webAdresseAppDownload -->
+    <string formatted="false" name="ueberTextFormated">Vertretungsplan v%s beta\nEntwickelt von Hendrik Rosendahl \nE-Mail:%s \nWebseite:%s \nLizenz:%s \n\nAlle Angaben sind ohne Gewähr!</string><!--  erstes %s: version_nr ; zweites %s: emailAdresseEntwickler ; drittes %s: webAdresseAppDownload ; viertes %s: GNU_GPLwebadresse -->
+    <string name="emailAdresseEntwickler">vertretungsplanapp-hero@yahoo.de</string>
+    <string name="GNU_GPLwebadresse">http://www.gnu.org/licenses</string>
     <string name="debugTitel">Achtung!</string>
     <string name="debugText">Du verwendest jetzt den Debug-Mode.\nDieser ist nicht für die normale Benutzung geeignet.</string>
     <string name="klassenAuswaehlen">Klassen auswählen</string>

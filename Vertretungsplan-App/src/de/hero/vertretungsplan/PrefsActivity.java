@@ -130,7 +130,7 @@ public class PrefsActivity extends PreferenceActivity {
 			    dialogText.setTextColor(Color.BLACK);
 			    dialogText.setAutoLinkMask(Linkify.ALL);
 			    
-			    dialogText.setText(String.format(getString(R.string.ueberTextFormated), getString(R.string.version_nr), getString(R.string.webAdresseAppDownload)));
+			    dialogText.setText(String.format(getString(R.string.ueberTextFormated), getString(R.string.version_nr), getString(R.string.emailAdresseEntwickler), getString(R.string.webAdresseAppDownload), getString(R.string.GNU_GPLwebadresse)));
 			    ueberDialog.show();
 				return true;
 			}
