@@ -25,14 +25,14 @@
 
     
     
-    <string name="version_nr">0.3</string>
+    <string name="version_nr">0.4</string>
     <string name="app_name">Vertretungsplan</string>
     <string name="menu_settings">Settings</string>
     <string name="menu_preferences">Optionen</string>
     <string name="aktualisieren">Aktualisieren</string>
     <string name="zuletztAktualisiertAm">Zuletzt aktualisiert am</string>
     <string name="ueber">Über</string>
-    <string formatted="false" name="ueberTextFormated">Vertretungsplan v%s beta\nEntwickelt von Hendrik Rosendahl \nE-Mail:%s \nWebseite:%s \nLizenz:%s \n\nAlle Angaben sind ohne Gewähr!</string><!--  erstes %s: version_nr ; zweites %s: emailAdresseEntwickler ; drittes %s: webAdresseAppDownload ; viertes %s: GNU_GPLwebadresse -->
+    <string formatted="false" name="ueberTextFormated">Vertretungsplan v%s \nEntwickelt von Hendrik Rosendahl \nE-Mail:%s \nWebseite:%s \nLizenz:%s \n\nAlle Angaben sind ohne Gewähr!</string><!--  erstes %s: version_nr ; zweites %s: emailAdresseEntwickler ; drittes %s: webAdresseAppDownload ; viertes %s: GNU_GPLwebadresse -->
     <string name="emailAdresseEntwickler">vertretungsplanapp-hero@yahoo.de</string>
     <string name="GNU_GPLwebadresse">http://www.gnu.org/licenses</string>
     <string name="debugTitel">Achtung!</string>
