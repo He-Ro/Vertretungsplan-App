@@ -16,13 +16,13 @@
 \pagestyle{empty}
 \begin{document}
 \begin{center}
-\includegraphics[scale=0.75]{icon_android.png}
+\includegraphics[]{icon_android.png}
 
 \textbf{\Huge{Vertretungsplan-App}}
 
 Informatik-Projekt am St. Michael Gymnasium Ahlen
 \end{center}
-\vspace{7cm}
+\vspace{6cm}
 \tableofcontents
 
 \newpage
@@ -41,24 +41,24 @@ Schulrechner, auf denen man nichts installieren kann, sondern am Besten ein eige
 
 Was bringt einem dieses Projekt denn eigentlich, magst du dich fragen. Zum einen hilfst du deinen Mitschülern, welche die App benutzen, zum anderen wirst du einiges über die Android-Programmierung erfahren, aber auch in einem gewissen Maße, wie ein Android-Handy funktioniert. Auch wirst du erfahren, wie man solch ein Projekt mit Git organisiert.
 \newline
-\textbf{Nochmal Gruppenarbeit ist sehr wünschenswert :)}
+\textbf{Nochmal: Gruppenarbeit ist sehr wünschenswert :)}
 \newpage
 \section{Aller Anfang ist mühsam}
 
-Du möchtest dich jetzt erst mal langsam an Android antasten, was völlig verständlich ist. Dazu gibt es wieder auf \url{https://developer.android.com/} eine Anleitung, welche sehr gut und ausführlich ist: \url{https://developer.android.com/training/basics/firstapp/index.html}. Bei Problemen einfach googlen oder auf \url{http://www.stackoverflow.com} suchen, welches eine sehr gute Hilfe ist.
+Du möchtest dich jetzt erst mal langsam an Android antasten, was völlig verständlich ist. Dazu gibt es hier eine ausführliche Anleitung: \url{https://developer.android.com/training/basics/firstapp/index.html}. Als Programmierumgebung empfehle ich \linebreak Eclipse. In der Anleitung wird auch erklärt, wie man ein Add-On zu Eclipse hinzufügt, außerdem wirst du beim Erstellen deiner ersten App begleitet. Bei Problemen einfach googlen oder auf \url{http://www.stackoverflow.com} suchen, welches eine sehr gute Hilfe ist.
 Damit hast du dann schon deine erste Android-App programmiert. Auch wenn du jetzt etwas erschlagen bist, so hast du doch bis jetzt sehr viel erreicht. Wenn du hierfür etwas länger brauchst ist das völlig normal, ich hab auch erst einmal eine kleine simple App programmiert, um mich heranzutasten.
 
 \section{Das Vertretungsplan-Projekt}
 \subsection{Die Vorbereitungen}
 Du solltest jetzt dein erstes Android-Programm auf einem Emulator, oder noch besser auch auf einem Android-Smartphone, ans Laufen gebracht haben. Nun gilt es das Vertretungsplan-Projekt in deinen Eclipse-Workspace zu laden und dieses zu starten.
-Genutzt wird \href{http://git-scm.com/}{Git}, es verwaltet Versionen von Dateien, in unserem Fall von den Programmdateien unseres Projektes. Zum Speichern der Daten im Internet benutzen wir \href{http://www.github.com}{GitHub}. Um das Projekt runterzuladen benötigst du keinen Account. Wenn du später die Änderungen und Verbesserungen, die du gemacht hast, wieder Hochladen möchtest, musst du einen Account bei GitHub haben, welcher kostenlos ist. Ich empfehle dir also jetzt schon einen Account anzulegen und eventuell auch ein Testprojekt hochzuladen um die Features, die Git und GitHub bieten, auszuprobieren. Zu Git und GitHub gibt es hier eine sehr gute Anleitung: \url{https://help.github.com/}. Danach solltest du wissen, was z.B. ein Commit ist und auch, wie du deine Änderungen nach GitHub ``pusht''.
+Genutzt wird \href{http://git-scm.com/}{Git}, es verwaltet Versionen von Dateien, in unserem Fall von den Programmdateien unseres Projektes. Zum Speichern der Daten im Internet benutzen wir \href{http://www.github.com}{GitHub}. Um das Projekt herunterzuladen benötigst du keinen Account. Wenn du später die Änderungen und Verbesserungen, die du gemacht hast, wieder hochladen möchtest, musst du einen Account bei GitHub haben, welcher kostenlos ist. Ich empfehle dir also jetzt schon einen Account anzulegen und eventuell auch ein Testprojekt hochzuladen um die Features, die Git und GitHub bieten, auszuprobieren. Zu Git und GitHub gibt es hier eine sehr gute Anleitung: \url{https://help.github.com/}. Danach solltest du wissen, was z.B. ein Commit ist und auch, wie du deine Änderungen nach GitHub ``pusht''.
 Meine Repository kannst du hier finden: \url{https://github.com/He-Ro/Vertretungsplan-App/}, die Webseite kannst du hier besuchen: \url{http://he-ro.github.com/Vertretungsplan-App}.
 Um nun Lese- und Schreib-Rechte auf meine Repository zu erhalten benötigst du einen Key, den ich zunächst erstellen muss, wie es hier beschrieben ist \url{https://help.github.com/articles/generating-ssh-keys}, dort steht auch, wie du den öffentlichen Key importieren kannst.
-Wenn du die Repository nun lokal auf deinem Rechner hast kannst du diese in Eclipse importieren, mache dies folgendermaßen \textit{Datei $\rightarrow$ Importieren... $\rightarrow$ Android $\rightarrow$ Existierender Android Code}. Wähle den Ordner mit dem Code aus. Lass das Projekt aber nicht in deinen Workspace kopieren. Für Eclipse gibt es auch ein Plug-In, welches Git verwaltet, es heißt ``EGit'', wenn du möchtest kannst du dieses auch installieren.
+Wenn du die Repository nun lokal auf deinem Rechner hast kannst du diese in Eclipse importieren, mache dies folgendermaßen \textit{Datei $\rightarrow$ Importieren... $\rightarrow$ Android $\rightarrow$ Existierender Android Code}. Wähle den Ordner mit dem Code aus, welcher \texttt{Vertretungsplan-App} heißt. Lass das Projekt aber nicht in deinen Workspace kopieren. Für Eclipse gibt es auch ein Plug-In, welches Git verwaltet, es heißt ``EGit'', wenn du möchtest kannst du dieses auch installieren.
 Lass das Projekt jetzt laufen; bei Problemen googlen :)
 \newpage
 \subsection{Der Aufbau des Projektes}
-Den Aufbau eines Android Programms solltest du bis jetzt wissen, nämlich, dass im \textit{src}-Ordner die Java-Dateien liegen. Im \textit{res}-Ordner die Ressourcen, also vor allem die Layout-XLM-Dateien, die Bild-Dateien, die statischen Strings, und so weiter. Und dass die \textit{AndroidManifest.xml}-Datei einfach im Projektordern liegt.
+Den Aufbau eines Android Programms solltest du jetzt kennen, nämlich, dass im \textit{src}-Ordner die Java-Dateien liegen. Im \textit{res}-Ordner die Ressourcen, also vor allem die Layout-XLM-Dateien, die Bild-Dateien, die statischen Strings, und so weiter. Und dass die \textit{AndroidManifest.xml}-Datei einfach im Projektordner liegt.
 Zunächst einen Überblick über das Programm und die Klassen, die dazugehören:
 \begin{center}
 \begin{longtable}{p{5cm}p{5cm}p{5cm}}
@@ -128,7 +128,7 @@ Um diese Version zu veröffentlichen sind einige Maßnahmen zu treffen, diese li
  Glückwunsch!! Du hast jetzt eine neue Version veröffentlicht. Wenn deine Mitschüler die Option zum Überprüfen der Aktualität, dürften diese innerhalb der nächsten Woche eine Meldung erhalten.
 
 \section{Das Projekt weitergeben}
-Wenn du dann schließlich auch das Abitur schaffst und von der Schule gehst musst du natürlich das Projekt so vorbereiten, dass es auch an jüngere Mitschüler weitergegeben werden kann. Hiezu solltest du diese Datei(\LaTeX-Datei) anpassen, sodass es den jetzigen Stand widerspiegelt, hierzu gehört auch das eintragen in die Autorenliste, sowie in der App um ``Über''-Menü. Außerdem solltest du das Programm gut kommentieren, so wie man es immer macht!!
+Wenn du dann schließlich auch das Abitur schaffst und von der Schule gehst musst du natürlich das Projekt so vorbereiten, dass es auch an jüngere Mitschüler weitergegeben werden kann. Hierzu solltest du diese Datei(\LaTeX-Datei) anpassen, sodass es den jetzigen Stand widerspiegelt, hierzu gehört auch das Eintragen in die Autorenliste, sowie in der App um ``Über''-Menü. Außerdem solltest du das Programm gut kommentieren, so wie man es immer macht!!
 
 \section{Mitwirkende}
 \subsection{Schüler}
