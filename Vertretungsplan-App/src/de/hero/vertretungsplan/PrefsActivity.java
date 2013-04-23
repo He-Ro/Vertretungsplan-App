@@ -169,28 +169,8 @@ public class PrefsActivity extends PreferenceActivity {
 	    switch (id) {
 
 	            case R.string.dialog_klasse:
-	            	String[] strKlasse = loadStringArray("KlassenArray", this);
-	            	if (strKlasse.length == 0) {
-	            		strKlasse = new String[24];
-	            		strKlasse[0]="Q13";
-	            		strKlasse[1]="Q12";
-	            		strKlasse[2]="Q11";
-	            		strKlasse[3]="EPH 10";
-	            		int j = 4;
-	            		for (int i = 9;i>4;i--) {
+	            	String[] strKlasse = this.getResources().getStringArray(R.array.str_klassen);
 
-		            		strKlasse[j]=i + "A";
-		            		j++;
-		            		strKlasse[j]=i + "B";
-		            		j++;
-		            		strKlasse[j]=i + "C";
-		            		j++;
-		            		strKlasse[j]=i + "D";
-		            		j++;
-	            		}
-	            	}
-	            	saveStringArray(strKlasse,"KlassenArray",this);
-	            	
 	                CharSequence[] chSqKlasse = new CharSequence[strKlasse.length];
 	                for (int i = 0; i < strKlasse.length; i ++) {
 	                	chSqKlasse[i] = strKlasse[i];
@@ -224,24 +204,24 @@ public class PrefsActivity extends PreferenceActivity {
 	                default: return null;
 	    }
 	}
-
-	public boolean saveStringArray(String[] array, String arrayName, Context mContext) {   
-	    SharedPreferences prefs = mContext.getSharedPreferences("prefs", 0);  
-	    SharedPreferences.Editor editor = prefs.edit();  
-	    editor.putInt(arrayName +"_size", array.length);  
-	    for(int i=0;i<array.length;i++)  
-	        editor.putString(arrayName + "_" + i, array[i]);  
-	    return editor.commit();  
-	} 
-	
-	public String[] loadStringArray(String arrayName, Context mContext) {  
-	    SharedPreferences prefs = mContext.getSharedPreferences("prefs", 0);  
-	    int size = prefs.getInt(arrayName + "_size", 0);  
-	    String array[] = new String[size];  
-	    for(int i=0;i<size;i++)  
-	        array[i] = prefs.getString(arrayName + "_" + i, null);  
-	    return array;  
-	}
+//
+//	public boolean saveStringArray(String[] array, String arrayName, Context mContext) {   
+//	    SharedPreferences prefs = mContext.getSharedPreferences("prefs", 0);  
+//	    SharedPreferences.Editor editor = prefs.edit();  
+//	    editor.putInt(arrayName +"_size", array.length);  
+//	    for(int i=0;i<array.length;i++)  
+//	        editor.putString(arrayName + "_" + i, array[i]);  
+//	    return editor.commit();  
+//	} 
+//	
+//	public String[] loadStringArray(String arrayName, Context mContext) {  
+//	    SharedPreferences prefs = mContext.getSharedPreferences("prefs", 0);  
+//	    int size = prefs.getInt(arrayName + "_size", 0);  
+//	    String array[] = new String[size];  
+//	    for(int i=0;i<size;i++)  
+//	        array[i] = prefs.getString(arrayName + "_" + i, null);  
+//	    return array;  
+//	}
 
 	public boolean saveBooleanArray(boolean[] array, String arrayName, Context mContext) {   
 	    SharedPreferences prefs = mContext.getSharedPreferences("prefs", 0);  

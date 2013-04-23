@@ -31,5 +31,30 @@
         <item >3</item>
         <item >6</item>
     </string-array>
+    <string-array name="str_klassen">
+        <item>Q12</item>
+        <item>Q11</item>
+        <item>EPH 10</item>
+        <item>9A</item>
+        <item>9B</item>
+        <item>9C</item>
+        <item>9D</item>
+        <item>8A</item>
+        <item>8B</item>
+        <item>8C</item>
+        <item>8D</item>
+        <item>7A</item>
+        <item>7B</item>
+        <item>7C</item>
+        <item>7D</item>
+        <item>6A</item>
+        <item>6B</item>
+        <item>6C</item>
+        <item>6D</item>
+        <item>5A</item>
+        <item>5B</item>
+        <item>5C</item>
+        <item>5D</item>
+    </string-array>
     
 </resources>
