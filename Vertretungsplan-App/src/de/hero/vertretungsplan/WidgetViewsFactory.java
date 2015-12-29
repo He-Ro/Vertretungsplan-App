@@ -33,6 +33,7 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.widget.RemoteViews;
 import android.widget.RemoteViewsService;
@@ -69,19 +70,12 @@ public class WidgetViewsFactory implements RemoteViewsService.RemoteViewsFactory
 
 		HashMap<String, String> eintrag = lstEintraege.get(position);
 
-		RemoteViews row = new RemoteViews(context.getPackageName(),
-				R.layout.custom_row_view);
+		RemoteViews row = new RemoteViews(context.getPackageName(),R.layout.custom_row_view);
 		row.setTextViewText(R.id.textFach1, (CharSequence) eintrag.get("fach1"));
 		row.setTextViewText(R.id.textFach2, (CharSequence) eintrag.get("fach2"));
-		row.setTextViewText(
-				R.id.textStunde,
-				((CharSequence) eintrag.get("stunde")).subSequence(0,
-						((CharSequence) eintrag.get("stunde")).length() - 4)
-						+ ".");
-		row.setTextViewText(R.id.textVertreter,
-				(CharSequence) eintrag.get("vertreter"));
-		row.setTextViewText(R.id.textKlassen,
-				(CharSequence) eintrag.get("klassen"));
+		row.setTextViewText(R.id.textStunde, ((CharSequence) eintrag.get("stunde")).subSequence(0, ((CharSequence) eintrag.get("stunde")).length() - 4) + ".");
+		row.setTextViewText(R.id.textVertreter, (CharSequence) eintrag.get("vertreter"));
+		row.setTextViewText(R.id.textKlassen, (CharSequence) eintrag.get("klassen"));
 		row.setTextViewText(R.id.textRaum, (CharSequence) eintrag.get("raum"));
 		row.setTextViewText(R.id.textText, (CharSequence) eintrag.get("text"));
 		return (row);
@@ -107,23 +101,17 @@ public class WidgetViewsFactory implements RemoteViewsService.RemoteViewsFactory
 
 		lstEintraege = getListe();
 		Log.d("WidgetViewsFactory", "onDataSetChanged()");
-		SharedPreferences prefs = context.getSharedPreferences(
-				context.getString(R.string.preferencesName), 0);
-		String strAktualisierungsText = prefs.getString(
-				context.getString(R.string.aktualisierungsTextKey), "");
-		StringBuffer str = new StringBuffer(strAktualisierungsText);
-
-		RemoteViews widget = new RemoteViews(context.getPackageName(),
-				R.layout.widget);
-		widget.setTextViewText(R.id.textTitel,
-				str.subSequence(0, str.indexOf("-")));
-		widget.setTextViewText(R.id.textUntertitel,
-				str.subSequence(str.indexOf("-") + 2, str.length()));
+		SharedPreferences mySharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+		String strAktualisierungsText = mySharedPreferences.getString(context.getString(R.string.datumVertretungsplan), "");
+		String aOderBWoche = mySharedPreferences.getString("aOderBWoche", "Woche");
+		
+		RemoteViews widget = new RemoteViews(context.getPackageName(),R.layout.widget);
+		widget.setTextViewText(R.id.textTitel, strAktualisierungsText);
+		widget.setTextViewText(R.id.textUntertitel, aOderBWoche);
 		AppWidgetManager appManager = AppWidgetManager.getInstance(context);
 		ComponentName name = new ComponentName(context, WidgetProvider.class);
 
-		appManager.partiallyUpdateAppWidget(appManager.getAppWidgetIds(name),
-				widget);
+		appManager.partiallyUpdateAppWidget(appManager.getAppWidgetIds(name),widget);
 
 	}
 

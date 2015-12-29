@@ -20,11 +20,11 @@ package de.hero.vertretungsplan;
 
 
 /**
- * Diese Klasse bewirkt, dass die der Hintergrund der Einträge hervorgehoben wird, die 
+ * Diese Klasse bewirkt, dass der Hintergrund der Einträge hervorgehoben wird, die 
  * in den Optionen unter Klassen eingetragen sind.
  */
 
-import java.util.HashMap;
+import java.util.Map;
 import java.util.List;
 import java.util.Set;
 
@@ -37,8 +37,10 @@ import android.widget.TextView;
 
 public class MyListAdapter extends SimpleAdapter {
 	private Set<String> strFilter;
-	public MyListAdapter(Context context, List<HashMap<String, String>> items, int resource, String[] from, int[] to, Set<String> pStrFilter) {
-		super(context, items, resource, from, to);
+	public MyListAdapter(Context context, List<Map<String, String>> items, Set<String> pStrFilter) {
+		super(context, items, R.layout.custom_row_view,
+        		new String[] {"stunde","fach1","vertreter","fach2","klassen","raum","text"},
+        		new int[] {R.id.textStunde,R.id.textFach1,R.id.textVertreter,R.id.textFach2,R.id.textKlassen,R.id.textRaum,R.id.textText});
 		strFilter = pStrFilter;
 	}
 
@@ -46,15 +48,17 @@ public class MyListAdapter extends SimpleAdapter {
 	public View getView(int position, View convertView, ViewGroup parent) {
 		View view = super.getView(position, convertView, parent);
 		
+		// Hole dir den String mit den Klassen aus dem Vertretungstext
 		String strKlasse =((TextView)view.findViewById(R.id.textKlassen)).getText().toString();
+		// Falls es mehrere Klassen Betrifft, z.B. "10A, 10B, 10D" wird der String hier aufgesplittet
 		String[] arrKlasse = strKlasse.split(",");
-		for (int i = 0; i < arrKlasse.length; i ++) {
-			if (strFilter.contains(arrKlasse[i].trim())) {
+		for (String klasse : arrKlasse) {
+			if (strFilter.contains(klasse.trim())) {
+				// setze den hervorgehobenen Hintergrund
 				view.setBackgroundColor(Color.parseColor("#C7C7C7"));
 				return view;
 			}
 		}
-		
 		view.setBackgroundColor(Color.WHITE);
 		return view;
 	}

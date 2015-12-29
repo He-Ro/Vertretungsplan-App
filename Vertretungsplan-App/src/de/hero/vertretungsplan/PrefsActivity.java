@@ -1,23 +1,22 @@
 package de.hero.vertretungsplan;
 
 /* 
-    Vertretungsplan-App
-    Copyright (C) 2013  Hendrik Rosendahl
+ Vertretungsplan-App
+ Copyright (C) 2013  Hendrik Rosendahl
 
-    This program is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation, either version 3 of the License, or
+ (at your option) any later version.
 
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
 
-    You should have received a copy of the GNU General Public License
-    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ You should have received a copy of the GNU General Public License
+ along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-
 
 /**
  * Dies ist die Activity für die Optionen, hier werden die Aktionen ausgeführt,
@@ -27,7 +26,6 @@ package de.hero.vertretungsplan;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -44,7 +42,9 @@ import android.util.Log;
 import android.widget.TextView;
 
 public class PrefsActivity extends PreferenceActivity {
-	
+
+	SharedPreferences mySharedPreferences;
+
 	private String getSummaryInterval(String value) {
 		if (value.equals("1/2")) {
 			return (getString(R.string.halbstuendlich));
@@ -57,198 +57,205 @@ public class PrefsActivity extends PreferenceActivity {
 		}
 		return "";
 	}
-	
-	@Override
-    public void onCreate(Bundle savedInstanceState) {        
-        super.onCreate(savedInstanceState);        
-        addPreferencesFromResource(R.xml.preferences); 
 
-        SharedPreferences mySharedPreferences = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
-        
-        ListPreference listPref = (ListPreference) findPreference("prefs_benachrichtigungsintervall");
-        listPref.setSummary(getSummaryInterval(mySharedPreferences.getString("prefs_benachrichtigungsintervall", "1")));
-        listPref.setOnPreferenceChangeListener(new ListPreference.OnPreferenceChangeListener() {
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		addPreferencesFromResource(R.xml.preferences);
+
+		mySharedPreferences = PreferenceManager
+				.getDefaultSharedPreferences(getBaseContext());
+
+		ListPreference listPref = (ListPreference) findPreference("prefs_benachrichtigungsintervall");
+		listPref.setSummary(getSummaryInterval(mySharedPreferences.getString(
+				"prefs_benachrichtigungsintervall", "1")));
+		listPref.setOnPreferenceChangeListener(new ListPreference.OnPreferenceChangeListener() {
 			public boolean onPreferenceChange(Preference preference,
 					Object newValue) {
 				preference.setSummary(getSummaryInterval(newValue.toString()));
 
-				MainActivity.setNewAlarm(getBaseContext(), true, newValue.toString());
+				MainActivity.setNewAlarm(getBaseContext(), true,
+						newValue.toString());
 				return true;
 			}
-        	
-        });
-        
-        Preference klasse = findPreference("prefs_klasse");
-        klasse.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
-			
+
+		});
+
+		Preference klasse = findPreference("prefs_klasse");
+		klasse.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+
 			public boolean onPreferenceClick(Preference preference) {
 				showDialog(R.string.dialog_klasse);
 				return true;
 			}
 		});
-        
-        CheckBoxPreference ckBxPref = (CheckBoxPreference) findPreference("prefs_benachrichtigungen");
-        ckBxPref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
-			
-			public boolean onPreferenceChange(Preference preference, Object newValue) {
+
+		CheckBoxPreference ckBxPref = (CheckBoxPreference) findPreference("prefs_benachrichtigungen");
+		ckBxPref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+
+			public boolean onPreferenceChange(Preference preference,
+					Object newValue) {
 				if (preference.getKey().equals("prefs_benachrichtigungen")) {
-					MainActivity.setNewAlarm(getBaseContext(), !((CheckBoxPreference) preference).isChecked());
+					MainActivity.setNewAlarm(getBaseContext(),
+							!((CheckBoxPreference) preference).isChecked(),
+							mySharedPreferences);
 				}
 				return true;
 			}
 		});
-        
-        CheckBoxPreference ckBxPrefAppUpdate = (CheckBoxPreference) findPreference("prefs_check_for_app_updates");
-        ckBxPrefAppUpdate.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
-			
-			public boolean onPreferenceChange(Preference preference, Object newValue) {
-				if (preference.getKey().equals("prefs_check_for_app_updates")) {
-					Intent i = new Intent(getBaseContext(), CheckForAppUpdate.class);
-					i.putExtra("setTimer", !((CheckBoxPreference) preference).isChecked());
-					if (!((CheckBoxPreference) preference).isChecked()) {
-						i.putExtra("checkNow", true);
+
+		CheckBoxPreference ckBxPrefAppUpdate = (CheckBoxPreference) findPreference("prefs_check_for_app_updates");
+		ckBxPrefAppUpdate
+				.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+
+					public boolean onPreferenceChange(Preference preference,
+							Object newValue) {
+						if (preference.getKey().equals(
+								"prefs_check_for_app_updates")) {
+							Intent i = new Intent(getBaseContext(),
+									CheckForAppUpdate.class);
+							i.putExtra("setTimer",
+									!((CheckBoxPreference) preference)
+											.isChecked());
+							if (!((CheckBoxPreference) preference).isChecked()) {
+								i.putExtra("checkNow", true);
+							}
+							getBaseContext().startService(i);
+						}
+						return true;
 					}
-					getBaseContext().startService(i);
-				}
-				return true;
-			}
-		});
-        
-        
-        Preference ueber = findPreference("ueber");
-        ueber.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
-			
+				});
+
+		Preference ueber = findPreference("ueber");
+		ueber.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+
 			public boolean onPreferenceClick(Preference preference) {
 				Dialog ueberDialog = new Dialog(PrefsActivity.this);
-				
+
 				ueberDialog.setContentView(R.layout.ueber_dialog_layout);
-			    ueberDialog.setTitle(getString(R.string.ueber));
-			    ueberDialog.setCancelable(true);			   
-			    ueberDialog.setCanceledOnTouchOutside(true);
-			    
-			    TextView dialogText = (TextView) ueberDialog.findViewById(R.id.text_in_dialog);
-			    dialogText.setTextColor(Color.BLACK);
-			    dialogText.setAutoLinkMask(Linkify.ALL);
-			    
-			    dialogText.setText(String.format(getString(R.string.ueberTextFormated), getString(R.string.version_nr), getString(R.string.emailAdresseEntwickler), getString(R.string.webAdresseAppDownload), getString(R.string.GNU_GPLwebadresse)));
-			    ueberDialog.show();
+				ueberDialog.setTitle(getString(R.string.ueber));
+				ueberDialog.setCancelable(true);
+				ueberDialog.setCanceledOnTouchOutside(true);
+
+				TextView dialogText = (TextView) ueberDialog
+						.findViewById(R.id.text_in_dialog);
+				dialogText.setTextColor(Color.BLACK);
+				dialogText.setAutoLinkMask(Linkify.ALL);
+
+				dialogText.setText(String.format(
+						getString(R.string.ueberTextFormated),
+						getString(R.string.version_nr),
+						getString(R.string.emailAdresseEntwickler),
+						getString(R.string.webAdresseAppDownload),
+						getString(R.string.GNU_GPLwebadresse)));
+				ueberDialog.show();
 				return true;
 			}
 		});
-        
 
-        CheckBoxPreference ckBxPrefDebugging = (CheckBoxPreference) findPreference("prefs_debug");
-        ckBxPrefDebugging.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
-			
-			public boolean onPreferenceChange(Preference preference, Object newValue) {
-				if (preference.getKey().equals("prefs_debug")) {
-					Log.d("PrefsActivity","new");
-					if (!((CheckBoxPreference) preference).isChecked()) {
-						AlertDialog.Builder builder = new AlertDialog.Builder(preference.getContext());
+		CheckBoxPreference ckBxPrefDebugging = (CheckBoxPreference) findPreference("prefs_debug");
+		ckBxPrefDebugging
+				.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
 
-						builder.setMessage(getString(R.string.debugText))
-						       .setTitle(getString(R.string.debugTitel));
+					public boolean onPreferenceChange(Preference preference,
+							Object newValue) {
+						if (preference.getKey().equals("prefs_debug")) {
+							Log.d("PrefsActivity", "new");
+							if (!((CheckBoxPreference) preference).isChecked()) {
+								AlertDialog.Builder builder = new AlertDialog.Builder(
+										preference.getContext());
 
-						AlertDialog dialog = builder.create();
-						dialog.show();
+								builder.setMessage(
+										getString(R.string.debugText))
+										.setTitle(
+												getString(R.string.debugTitel));
+
+								AlertDialog dialog = builder.create();
+								dialog.show();
+							}
+						}
+						return true;
 					}
-				}
-				return true;
-			}
-		});
-    }
+				});
+	}
+
 	/**
-	 * Hier wollte ich eine Custom ListPreference erstellen, die genutzt wird um die Klassen anzuzeigen
-	 * Diese können geändert werden, wenn es z.B. keine 13 mehr gibt.
-	 * Jedoch wird es nicht genutzt und zeigt so einfach nur eine Liste an Klassen aus und speichert die  
-	 * Daten im KlassenBoolean Array, weitere Infos:
+	 * Multiple choice Liste fuer die Auswahl der Klassen
 	 * https://developer.android.com/guide/topics/ui/settings.html#Custom
 	 */
 	@Override
 	protected Dialog onCreateDialog(int id) {
-	    switch (id) {
+		switch (id) {
 
-	            case R.string.dialog_klasse:
-	            	String[] strKlasse = this.getResources().getStringArray(R.array.str_klassen);
-
-	                CharSequence[] chSqKlasse = new CharSequence[strKlasse.length];
-	                for (int i = 0; i < strKlasse.length; i ++) {
-	                	chSqKlasse[i] = strKlasse[i];
-	                }
-
-	                final boolean[] blKlasse = loadBooleanArray("KlassenBoolean",this , strKlasse.length);
-	                final boolean[] blKlasseCopy = blKlasse.clone();
-	                return new AlertDialog.Builder(this).setTitle(
-	                        getString(R.string.klassenAuswaehlen)).setMultiChoiceItems(
-	                        chSqKlasse, blKlasse,
-	                        new DialogInterface.OnMultiChoiceClickListener() {
-	                            public void onClick(DialogInterface dialog, int whichButton, boolean isChecked) {
-	                                blKlasse[whichButton] = isChecked;
-	                            }
-	                        }).setPositiveButton(getString(R.string.ok),
-	                        new DialogInterface.OnClickListener() {
+		case R.string.dialog_klasse:
+			final boolean[] blKlasse = loadBooleanArray(mySharedPreferences, "KlassenBoolean");
+			final boolean[] blKlasseCopy = blKlasse.clone();
+			return new AlertDialog.Builder(this)
+					.setTitle(getString(R.string.klassenAuswaehlen))
+					.setMultiChoiceItems(R.array.str_klassen, blKlasse,
+							new DialogInterface.OnMultiChoiceClickListener() {
+								public void onClick(DialogInterface dialog, int whichButton, boolean isChecked) {
+									blKlasse[whichButton] = isChecked;
+								}
+							})
+					.setPositiveButton(getString(R.string.ok),
+							new DialogInterface.OnClickListener() {
 								public void onClick(DialogInterface dialog, int whichButton) {
-	                                saveBooleanArray( blKlasse,"KlassenBoolean", getBaseContext());
-	                                removeDialog(R.string.dialog_klasse);
+									saveBooleanArray(mySharedPreferences, "KlassenBoolean", blKlasse);
+									removeDialog(R.string.dialog_klasse);
 
-	                                SharedPreferences aktualisieren = getSharedPreferences(getString(R.string.preferencesName), 0);
-	                                LocalBroadcastManager.getInstance(getBaseContext()).sendBroadcast(new Intent("update_list").putExtra(getString(R.string.aktualisiertKey), aktualisieren.getString(getString(R.string.aktualisiertKey), "Noch nicht aktualisiert")));
-	                            }
-	                        }).setNegativeButton(getString(R.string.abbrechen),
-	                        new DialogInterface.OnClickListener() {
-	                            public void onClick(DialogInterface dialog, int whichButton) {
-	                                saveBooleanArray( blKlasseCopy,"KlassenBoolean", getBaseContext());
-	                                removeDialog(R.string.dialog_klasse);
-	                            }
-	                        }).create();
-	                default: return null;
-	    }
-	}
-//
-//	public boolean saveStringArray(String[] array, String arrayName, Context mContext) {   
-//	    SharedPreferences prefs = mContext.getSharedPreferences("prefs", 0);  
-//	    SharedPreferences.Editor editor = prefs.edit();  
-//	    editor.putInt(arrayName +"_size", array.length);  
-//	    for(int i=0;i<array.length;i++)  
-//	        editor.putString(arrayName + "_" + i, array[i]);  
-//	    return editor.commit();  
-//	} 
-//	
-//	public String[] loadStringArray(String arrayName, Context mContext) {  
-//	    SharedPreferences prefs = mContext.getSharedPreferences("prefs", 0);  
-//	    int size = prefs.getInt(arrayName + "_size", 0);  
-//	    String array[] = new String[size];  
-//	    for(int i=0;i<size;i++)  
-//	        array[i] = prefs.getString(arrayName + "_" + i, null);  
-//	    return array;  
-//	}
-
-	public boolean saveBooleanArray(boolean[] array, String arrayName, Context mContext) {   
-	    SharedPreferences prefs = mContext.getSharedPreferences("prefs", 0);  
-	    SharedPreferences.Editor editor = prefs.edit();  
-	    editor.putInt(arrayName +"_size", array.length);  
-	    for(int i=0;i<array.length;i++)  
-	        editor.putBoolean(arrayName + "_" + i, array[i]);  
-	    return editor.commit();  
-	} 
+									SharedPreferences aktualisieren = getSharedPreferences(
+											getString(R.string.preferencesName),
+											0);
+									LocalBroadcastManager
+											.getInstance(getBaseContext())
+											.sendBroadcast(new Intent("update_list").putExtra(
+													getString(R.string.datumZuletztAktualisiert),aktualisieren.getString(
+															getString(R.string.datumZuletztAktualisiert),"Noch nicht aktualisiert")));
+								}
+							})
+					.setNegativeButton(getString(R.string.abbrechen),
+							new DialogInterface.OnClickListener() {
+								public void onClick(DialogInterface dialog, int whichButton) {
+									saveBooleanArray(mySharedPreferences, "KlassenBoolean", blKlasseCopy);
+									removeDialog(R.string.dialog_klasse);
+								}
+							}).create();
+		default:
+			return null;
+		}
+	}	
 	
-	public boolean[] loadBooleanArray(String arrayName, Context mContext, int laenge) {  
-		boolean[] array = loadBooleanArray(arrayName,mContext);
-		if (array.length != laenge) {
-	    	return new boolean[laenge];
-	    }
+	/**
+	 * Saves the array <b>array</b> to the preferences
+	 * @param key - name of the preference
+	 * @param array - boolean Array with a maximum size of 32 entries
+	 * @return true - if successfully written, false otherwise
+	 */
+	public static boolean saveBooleanArray(SharedPreferences prefs, String key, boolean[] array) {
+		SharedPreferences.Editor editor = prefs.edit();
+		int bitArray = 0;
+		for (int i = 0; i < array.length; i++) {
+			if (array[i]) {
+				bitArray += (int) Math.pow(2.0, i);
+			}
+		}
+		editor.putInt(key, bitArray);
+		return editor.commit();
+	}
+
+	/** Load a boolean Array, from an integer, which has first been encoded with <b>saveBooleanArray</b>
+	 * @param key - the name of the preference
+	 * @return the boolean Array
+	 */
+	public static boolean[] loadBooleanArray(SharedPreferences prefs, String key) {
+		int bitArray = prefs.getInt(key, 0);
+		boolean[] array = new boolean[32];
+		for (int i = 0; i < 32; i++) {
+			int rightMostBit = bitArray & 0x01;
+			array[i] = rightMostBit == 1 ? true: false;;
+			bitArray >>>= 1;
+		}
 		return array;
 	}
-	
-	public boolean[] loadBooleanArray(String arrayName, Context mContext) {
-		SharedPreferences prefs = mContext.getSharedPreferences("prefs", 0);  
-	    int size = prefs.getInt(arrayName + "_size", 0);
-	    boolean[] array = new boolean[size];  
-	    for(int i=0;i<size;i++)  
-	        array[i] = prefs.getBoolean(arrayName + "_" + i, false);  
-	    return array;  
-	}
-	
-
-
 }

@@ -30,7 +30,7 @@
     <string name="menu_settings">Settings</string>
     <string name="menu_preferences">Optionen</string>
     <string name="aktualisieren">Aktualisieren</string>
-    <string name="zuletztAktualisiertAm">Zuletzt aktualisiert am</string>
+    <string name="zuletztAktualisiertAm">Zuletzt aktualisiert am:</string>
     <string name="ueber">Über</string>
     <string formatted="false" name="ueberTextFormated">Vertretungsplan v%s \nEntwickelt von Hendrik Rosendahl \nE-Mail:%s \nWebseite:%s \nLizenz:%s \n\nAlle Angaben sind ohne Gewähr!</string><!--  erstes %s: version_nr ; zweites %s: emailAdresseEntwickler ; drittes %s: webAdresseAppDownload ; viertes %s: GNU_GPLwebadresse -->
     <string name="emailAdresseEntwickler">vertretungsplanapp-hero@yahoo.de</string>
@@ -51,8 +51,8 @@
     
     <string name="filename">hashmapList</string>
     <string name="preferencesName">aktualisiertFilename</string>
-    <string name="aktualisiertKey">aktualisiertKey</string>
-    <string name="aktualisierungsTextKey">aktualisierungsTextKey</string>
+    <string name="datumZuletztAktualisiert">aktualisiertKey</string>
+    <string name="datumVertretungsplan">aktualisierungsTextKey</string>
     <string name="dialog_klasse">dialog_klasse</string>
     <string name="klasse_set">klasse_set</string>
     <string name="v_plan_hash_value">intHashValue</string>

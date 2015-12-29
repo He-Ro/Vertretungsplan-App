@@ -39,7 +39,7 @@ public class OnBoot extends BroadcastReceiver {
 
 		if (mySharedPreferences.getBoolean("prefs_benachrichtigungen", false)) {
 			
-			MainActivity.setNewAlarm(context,true);
+			MainActivity.setNewAlarm(context,true, mySharedPreferences);
 		}
 		if (mySharedPreferences.getBoolean("prefs_check_for_app_updates", false)) {
 

@@ -77,7 +77,7 @@ public class CheckForUpdates extends Service {
 	
 	
 	    	SharedPreferences prefs = context.getSharedPreferences(context.getString(R.string.preferencesName), 0);
-			String strAktualisierungsText =prefs.getString(context.getString(R.string.aktualisierungsTextKey), "" );
+			String strAktualisierungsText =prefs.getString(context.getString(R.string.datumVertretungsplan), "" );
 	
 	        String title = context.getString(R.string.aktualisierterV_Plan);
 	    	CharSequence contentTitle = title;

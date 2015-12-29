@@ -94,15 +94,16 @@ public class HtmlWork extends AsyncTask<URI,Void,StringBuffer> {
 
 	private Context context;
 	private boolean dataChanged = false;
+	private SharedPreferences mySharedPreferences;
 	
 	public HtmlWork(Context pContext) {
 		context = pContext;
 		Log.d("HtmlWork","Construktor");
 		ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+		mySharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
 
         if (cm.getActiveNetworkInfo() != null && cm.getActiveNetworkInfo().isConnected()) {
 			try {
-				SharedPreferences mySharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
 				
 				if (mySharedPreferences.getBoolean("prefs_debug", false)) {
 					execute(new URI(context.getString(R.string.debug_htmlAdresse)));
@@ -125,15 +126,13 @@ public class HtmlWork extends AsyncTask<URI,Void,StringBuffer> {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		SharedPreferences aktualisieren = context.getSharedPreferences(context.getString(R.string.preferencesName), 0);
-		
 		SimpleDateFormat fmt = new SimpleDateFormat("dd.MM.yy HH:mm:ss");
 		Date date = new Date();
-		String dateString = context.getString(R.string.zuletztAktualisiertAm) + " " + fmt.format(date);
+		String dateString = fmt.format(date);
 		
-        SharedPreferences.Editor editor = aktualisieren.edit();
-        Log.d("jetzt",dateString);
-        editor.putString(context.getString(R.string.aktualisiertKey), dateString);
+        SharedPreferences.Editor editor = mySharedPreferences.edit();
+        //Log.d("jetzt",dateString);
+        editor.putString(context.getString(R.string.datumZuletztAktualisiert), dateString);
 		editor.commit();
 		
 		//Widget Stuff
@@ -194,9 +193,9 @@ public class HtmlWork extends AsyncTask<URI,Void,StringBuffer> {
 
 
 	public void extractTable(StringBuffer strHtml) throws IOException {
-
+        SharedPreferences.Editor editor = mySharedPreferences.edit();
+        
 		ArrayList<HashMap<String,String>> lstEintraege = new ArrayList<HashMap<String,String>>();
-		
 		
 		HashMap<String,String> hmEintrag = new HashMap<String,String>();
 		
@@ -205,6 +204,7 @@ public class HtmlWork extends AsyncTask<URI,Void,StringBuffer> {
 	    intIndex = strHtml.indexOf("</table");
 	    strHtml.delete(intIndex, strHtml.length() - 1);
 	    DateFormat dfm = new SimpleDateFormat("dd.MM.yyyy");
+	    DateFormat dfm2 = new SimpleDateFormat("dd.MM.yy");
     	Date dat = new Date();
     	try {
 			dat = dfm.parse(strHtml.substring(strHtml.indexOf(":") + 2));
@@ -212,14 +212,15 @@ public class HtmlWork extends AsyncTask<URI,Void,StringBuffer> {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		int date = dat.getDate();
-		int month = dat.getMonth() + 1;
+//		int date = dat.getDate();
+//		int month = dat.getMonth() + 1;
     	
-		String strAktualisierungsText =  ((date < 10) ? "0" + date : date)  + "." + ((month < 10) ? "0" + month : month) + "." + (dat.getYear() + 1900) + " - " + strHtml.substring(strHtml.indexOf("<td>") + 4,strHtml.indexOf("</td"));
-        Log.d("HtmlWork",strAktualisierungsText);
-	    SharedPreferences prefs = context.getSharedPreferences(context.getString(R.string.preferencesName), 0);
-        SharedPreferences.Editor editor = prefs.edit();
-        editor.putString(context.getString(R.string.aktualisierungsTextKey), strAktualisierungsText);
+		//String strAktualisierungsText =  ((date < 10) ? "0" + date : date)  + "." + ((month < 10) ? "0" + month : month) + "." + (dat.getYear() + 1900) + " - " + strHtml.substring(strHtml.indexOf("<td>") + 4,strHtml.indexOf("</td"));
+		String datumVertretungsplan =  dfm2.format(dat);
+		String aOderBWoche =   strHtml.substring(strHtml.indexOf("<td>") + 4,strHtml.indexOf("</td"));
+	    Log.d("HtmlWork","strAktualisierungsText " + datumVertretungsplan);
+        editor.putString(context.getString(R.string.datumVertretungsplan), datumVertretungsplan);
+        editor.putString("aOderBWoche", aOderBWoche);
 		editor.commit();
 
 	    intIndex = strHtml.indexOf("<tr>");
@@ -253,10 +254,10 @@ public class HtmlWork extends AsyncTask<URI,Void,StringBuffer> {
 	      intIndex4 = strZeile.indexOf("</t");	    
 	      hmEintrag.put("vertreter", strZeile.substring(intIndex3 + 4, intIndex4));
 	      
-	      strZeile.delete(intIndex3, intIndex4 + 4);
+	      /*strZeile.delete(intIndex3, intIndex4 + 4);
 	      intIndex3 = strZeile.indexOf("<t");
 	      intIndex4 = strZeile.indexOf("</t");
-	      hmEintrag.put("fach2", strZeile.substring(intIndex3 + 4, intIndex4));
+	      hmEintrag.put("fach2", strZeile.substring(intIndex3 + 4, intIndex4));*/
 	      
 	      strZeile.delete(intIndex3, intIndex4 + 4);
 	      intIndex3 = strZeile.indexOf("<t");
@@ -292,7 +293,7 @@ public class HtmlWork extends AsyncTask<URI,Void,StringBuffer> {
 	    ObjectOutputStream oos = new ObjectOutputStream(fos);
 	    
 
-		int oldHash = prefs.getInt(context.getString(R.string.v_plan_hash_value), 0);
+		int oldHash = mySharedPreferences.getInt(context.getString(R.string.v_plan_hash_value), 0);
 	    
 	    oos.writeObject(lstEintraege);
 	    oos.close();
