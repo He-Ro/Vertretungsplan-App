@@ -10,7 +10,7 @@ apply plugin: 'com.android.application'
 
 dependencies {
     //compile fileTree(dir: 'libs', include: '*.jar')
-    compile 'com.android.support:support-v4:18.0.+'
+    compile 'com.android.support:support-v4:21.0.3'
 }
 
 android {
@@ -18,7 +18,7 @@ android {
     buildToolsVersion "23.0.2"
 
     defaultConfig {
-        applicationId "de.hero.vertretungsplanapp"
+        applicationId "de.hero.vertretungsplan"
         minSdkVersion 7
         targetSdkVersion 11
         versionCode 6
