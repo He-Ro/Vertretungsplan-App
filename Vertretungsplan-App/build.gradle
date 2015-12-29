@@ -19,7 +19,7 @@ android {
     defaultConfig {
         applicationId "de.hero.vertretungsplan"
         minSdkVersion 7
-        targetSdkVersion 11
+        targetSdkVersion 22
         versionCode 6
         versionName "0.4"
     }

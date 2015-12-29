@@ -41,10 +41,11 @@
             </intent-filter>
         </activity>
         <activity android:name="de.hero.vertretungsplan.PrefsActivity"
-            android:label="Optionen"></activity>
-        <service android:name="de.hero.vertretungsplan.CheckForUpdates"></service>
-        <service android:name="de.hero.vertretungsplan.WidgetUpdate"></service>
-        <service android:name="de.hero.vertretungsplan.CheckForAppUpdate"></service>
+            android:label="Optionen" />
+
+        <service android:name="de.hero.vertretungsplan.CheckForUpdates" />
+        <service android:name="de.hero.vertretungsplan.WidgetUpdate" />
+        <service android:name="de.hero.vertretungsplan.CheckForAppUpdate" />
 		
 		    <receiver android:icon="@drawable/ic_launcher"
               android:label="@string/app_name"
