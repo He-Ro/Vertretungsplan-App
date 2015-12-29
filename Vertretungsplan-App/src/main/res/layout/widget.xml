@@ -38,7 +38,7 @@
             android:layout_height="match_parent"
             android:adjustViewBounds="true"
             android:alpha="0.8"
-            android:contentDescription="@+string/app_name"
+            android:contentDescription="@string/app_name"
             android:paddingLeft="0dp"
             android:paddingRight="0dp"
             android:src="@drawable/ic_white_launcher" />
@@ -89,7 +89,7 @@
                 android:layout_height="match_parent"
                 android:alpha="0.8"
                 android:clickable="true"
-                android:contentDescription="@+string/aktualisieren"
+                android:contentDescription="@string/aktualisieren"
                 android:longClickable="false"
                 android:src="@drawable/aktualisieren_drawable" />
 

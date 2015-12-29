@@ -1,2 +1,2 @@
 # Dies ist die Versionsnummer der aktuellen Vertretungsplan Android-App
-6
+7
