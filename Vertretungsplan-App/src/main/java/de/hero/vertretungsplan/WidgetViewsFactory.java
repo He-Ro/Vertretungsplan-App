@@ -71,13 +71,13 @@ public class WidgetViewsFactory implements RemoteViewsService.RemoteViewsFactory
 		HashMap<String, String> eintrag = lstEintraege.get(position);
 
 		RemoteViews row = new RemoteViews(context.getPackageName(),R.layout.custom_row_view);
-		row.setTextViewText(R.id.textFach1, (CharSequence) eintrag.get("fach1"));
-		row.setTextViewText(R.id.textFach2, (CharSequence) eintrag.get("fach2"));
-		row.setTextViewText(R.id.textStunde, ((CharSequence) eintrag.get("stunde")).subSequence(0, ((CharSequence) eintrag.get("stunde")).length() - 4) + ".");
-		row.setTextViewText(R.id.textVertreter, (CharSequence) eintrag.get("vertreter"));
-		row.setTextViewText(R.id.textKlassen, (CharSequence) eintrag.get("klassen"));
-		row.setTextViewText(R.id.textRaum, (CharSequence) eintrag.get("raum"));
-		row.setTextViewText(R.id.textText, (CharSequence) eintrag.get("text"));
+		row.setTextViewText(R.id.textFach1, eintrag.get("fach1"));
+		row.setTextViewText(R.id.textFach2, eintrag.get("fach2"));
+		row.setTextViewText(R.id.textStunde, (eintrag.get("stunde")).subSequence(0, eintrag.get("stunde").length() - 4) + ".");
+		row.setTextViewText(R.id.textVertreter, eintrag.get("vertreter"));
+		row.setTextViewText(R.id.textKlassen, eintrag.get("klassen"));
+		row.setTextViewText(R.id.textRaum, eintrag.get("raum"));
+		row.setTextViewText(R.id.textText, eintrag.get("text"));
 		return (row);
 	}
 

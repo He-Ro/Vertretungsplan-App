@@ -34,7 +34,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
@@ -195,15 +194,21 @@ public class MainActivity extends ListActivity {
 		Log.d("MainActivity", "cancelAlarm");
 		if (set) {
 
-			long lngInterval = AlarmManager.INTERVAL_HOUR * 3;
-			if (interval.equals("1/2")) {
-				lngInterval = AlarmManager.INTERVAL_HALF_HOUR;
-			} else if (interval.equals("1")) {
-				lngInterval = AlarmManager.INTERVAL_HOUR;
-			} else if (interval.equals("3")) {
-				lngInterval = AlarmManager.INTERVAL_HOUR * 3;
-			} else if (interval.equals("6")) {
-				lngInterval = AlarmManager.INTERVAL_HALF_DAY / 2;
+			long lngInterval;
+			switch (interval) {
+				case "1/2":
+					lngInterval = AlarmManager.INTERVAL_HALF_HOUR;
+					break;
+				case "1":
+					lngInterval = AlarmManager.INTERVAL_HOUR;
+					break;
+				case "6":
+					lngInterval = AlarmManager.INTERVAL_HALF_DAY / 2;
+					break;
+				case "3":
+				default:
+					lngInterval = AlarmManager.INTERVAL_HOUR * 3;
+					break;
 			}
 			Log.d("MainActivity", "setAlarm " + interval + " Stunden");
 			am.setInexactRepeating(AlarmManager.ELAPSED_REALTIME,

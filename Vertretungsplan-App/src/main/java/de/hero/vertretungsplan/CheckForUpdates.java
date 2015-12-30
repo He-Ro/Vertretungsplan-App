@@ -58,7 +58,7 @@ public class CheckForUpdates extends Service {
 		
 		public HtmlWorkAndNotify(Context pContext) {
 			super(pContext);
-			Log.d("HtmlWorkAndNotify","Construktor");
+			Log.d("HtmlWorkAndNotify", "Constructor");
 			context = pContext;
 		}
 
@@ -78,9 +78,7 @@ public class CheckForUpdates extends Service {
 	
 	    	SharedPreferences prefs = context.getSharedPreferences(context.getString(R.string.preferencesName), 0);
 			String strAktualisierungsText =prefs.getString(context.getString(R.string.datumVertretungsplan), "" );
-	
-	        String title = context.getString(R.string.aktualisierterV_Plan);
-	    	CharSequence contentTitle = title;
+
 	    	CharSequence contentText = context.getString(R.string.planFuerDen) + strAktualisierungsText.substring(0, strAktualisierungsText.indexOf("-") - 1);
 	    	Intent notificationIntent = new Intent(context, MainActivity.class);
 	    	PendingIntent contentIntent = PendingIntent.getActivity(context, 0, notificationIntent, 0);
@@ -89,7 +87,7 @@ public class CheckForUpdates extends Service {
 										.setDefaults(Notification.DEFAULT_ALL)
 										.setAutoCancel(true)
 										.setContentIntent(contentIntent)
-										.setContentTitle(contentTitle)
+					.setContentTitle(context.getString(R.string.aktualisierterV_Plan))
 										.setContentText(contentText)
 										.setWhen(when)
 										.setSmallIcon(icon)
