@@ -147,7 +147,7 @@ public class HtmlWork extends AsyncTask<URI,Void,StringBuffer> {
 			response = httpClient.execute(httpGet, localContext);
 			StringBuffer strResult = new StringBuffer();
 			
-			BufferedReader reader = new BufferedReader(new InputStreamReader(response.getEntity().getContent(), "ISO-8859-1"));
+			BufferedReader reader = new BufferedReader(new InputStreamReader(response.getEntity().getContent(), "UTF-8"));
 			String line = null;
 			while ((line = reader.readLine()) != null) {
 				strResult.append(line);

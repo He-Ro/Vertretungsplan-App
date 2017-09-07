@@ -25,7 +25,7 @@
 
     
     
-    <string name="version_nr">0.4</string>
+    <string name="version_nr">0.5.1</string>
     <string name="app_name">Vertretungsplan</string>
     <string name="menu_settings">Settings</string>
     <string name="menu_preferences">Optionen</string>

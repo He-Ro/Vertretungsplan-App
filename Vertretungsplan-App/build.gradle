@@ -20,7 +20,7 @@ android {
         applicationId "de.hero.vertretungsplan"
         minSdkVersion 7
         targetSdkVersion 22
-        versionCode 7
-        versionName "0.5"
+        versionCode 8
+        versionName "0.5.1"
     }
 }
