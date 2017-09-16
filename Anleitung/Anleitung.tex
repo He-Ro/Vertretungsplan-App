@@ -118,17 +118,44 @@ Detaillierte Informationen zu den einzelnen Klassen und Ressourcen sind als Komm
 Wir nehmen jetzt an, dass du ein paar Änderungen an der App vorgenommen hast und bist der Meinung, dass die neue Version stabiler/besser läuft als die Alte.
 Um diese Version zu veröffentlichen sind einige Maßnahmen zu treffen, diese liste ich hier auf:
 \begin{enumerate}
- \item Setzte den \texttt{versionCode} in der \textit{build.gradle} Datei um genau einen hoch. Merke dir diese neue Versionsnummer.
- \item Gib der Version einen sinnvollen Namen, dies hat nichts mit dem \texttt{versionCode} zu tun und ist sowohl in \textit{build.gradle} unter \texttt{versionName} und in \textit{res/values/strings.xml} unter \texttt{version\_nr} zu finden. Wenn die aktuelle Version z.B 0.3.2 ist und du nur kleine Bug-Fixes veröffentlichst, solltest du die letzte Nummer um Eins erhöhen, sodass es 0.3.3 wird. Bei neuen Funktionen kannst du die zweite Nummer um Eins erhöhen und die letzte auf Null setzen, also 0.4.0. Bei einer GANZ neuen Funktion, z.B. das Laufband ist mit hinzugefügt, das Layout wurde grundlegend verändert o.ä. kannst du die erste Zahl um Eins erhöhen, dass es 1.0.0 wird. (Infos: \href{https://de.wikipedia.org/wiki/Version_\%28Software\%29}{\texttt{https://de.wikipedia.org/wiki/Version\_(Software)}})
- \item Nun exportierst du die apk-Datei, dies ist in Android Studio sehr einfach. Gehe dazu auf \textit{Build $\rightarrow$ Generate Signed APK\dots}. Die keystore-Datei ist in dem Projektordner gespeichert, das Passwort dazu musst du dir von Frau Terveer holen. Weitere Infos zum Signieren gibt es hier: \url{https://developer.android.com/tools/publishing/app-signing.html}.
+\item Setzte den \texttt{versionCode} in der \textit{build.gradle} Datei um genau einen hoch. Merke dir diese neue Versionsnummer.
+\item Gib der Version einen sinnvollen Namen, dies hat nichts mit dem \texttt{versionCode} zu tun und ist sowohl in \textit{build.gradle} unter \texttt{versionName} und in \textit{res/values/strings.xml} unter \texttt{version\_nr} zu finden.
+Wenn die aktuelle Version z.B 0.3.2 ist und du nur kleine Bug-Fixes veröffentlichst, solltest du die letzte Nummer um Eins erhöhen, sodass es 0.3.3 wird.
+Bei neuen Funktionen kannst du die zweite Nummer um Eins erhöhen und die letzte auf Null setzen, also 0.4.0.
+Bei einer GANZ neuen Funktion, z.B. das Laufband ist mit hinzugefügt, das Layout wurde grundlegend verändert o.ä. kannst du die erste Zahl um Eins erhöhen, dass es 1.0.0 wird.
+(Infos: \href{https://de.wikipedia.org/wiki/Version_\%28Software\%29}{\texttt{https://de.wikipedia.org/wiki/Version\_(Software)}})
+\item Nun exportierst du die apk-Datei, dies ist in Android Studio sehr einfach. Gehe dazu auf \textit{Build $\rightarrow$ Generate Signed APK\dots}.
+Die keystore-Datei ist in dem Projektordner gespeichert, das Passwort dazu musst du dir von Frau Terveer holen.
+Weitere Infos zum Signieren gibt es hier: \url{https://developer.android.com/tools/publishing/app-signing.html}.
  
 Falls du nicht Android Studio verwendest, kannst du unter Linux einfach \texttt{./gradle assembleRelease} ausführen. \\
 Die APK kannst du dann mit Hilfe von \texttt{jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore <keystore> <APK> vertretungsplanandroidapp} signieren.
- \item Diese apk-Datei kann nun auf dem Android-Handys installiert werden. Dies solltest du am Besten noch einmal testen. Benenne die Datei so um, dass der Dateiname den Versionsnamen aus 2. enthält, also z.B. \texttt{Vertretungsplan\_0.3.apk}.
- \item Die apk-Datei muss nun hoch geladen werden, damit deine Mitschüler Zugriff auf die neue Version haben. Kopiere die apk-Datei dazu in den Ordner \texttt{Veroeffentlicht} und füge die Datei zu deinem Git-Repository hinzu. Nun änderst du die Versionsnummer in der Text-Datei \texttt{vertretungsplan\_version.txt} zu der Nummer von 1.  Dies bewirkt, dass die Klasse \texttt{CheckForAppUpdate} beim nächsten Check weiß, dass es eine neue Version gibt. Diese Änderungen werden nun ``comitted'' und zu GitHub ``gepusht''.
- \item Nun muss nur noch der Link auf der Webseite abgeändert werden. Der Link befindet sich natürlich in der index.html-Seite der Webseite, welche ein eigener Zweit(Branch) in GitHub ist. Diesen kannst du ``auschecken'' und dann lokal auf deinem Rechner bearbeiten, oder, weil es nur eine kleine Änderung ist auch in GitHub online. Den Link kannst du folgendermaßen erhalten. Gehe in GitHub im Zweig \texttt{master} auf \texttt{Veroeffentlicht}, dann auf die neue Version. Hier machst du einen Rechtsklick auf \text{Raw} und kopierst die URL-Adresse. Dies ist dann der Direktlink auf die neue Version, welche du in \texttt{index.html} einfügst.
+\item Diese apk-Datei kann nun auf dem Android-Handys installiert werden. Dies solltest du am Besten noch einmal testen. Benenne die Datei so um, dass der Dateiname den Versionsnamen aus 2. enthält, also z.B. \texttt{Vertretungsplan\_0.3.apk}.
+\item Die apk-Datei muss nun hoch geladen werden, damit deine Mitschüler Zugriff auf die neue Version haben.
+Kopiere die apk-Datei dazu in den Ordner \texttt{Veroeffentlicht} und füge die Datei zu deinem Git-Repository hinzu.
+\item Danach änderst du die Versionsnummer in der Text-Datei \texttt{vertretungsplan\_version.txt} zu der Nummer von 1.
+Dies bewirkt, dass die Klasse \texttt{CheckForAppUpdate} beim nächsten Check weiß, dass es eine neue Version gibt.
+Diese Änderungen werden nun ``comitted''.
+\item Bevor du die Änderungen nach GitHub ``pusht'', solltest du die Version auch in Git vermerken.
+Dies wird mit sogenannten Tags erreicht.
+Führe dazu zum Beispiel \texttt{git tag v0.3.0} aus.
+So wird der jetzige Commit als Version 0.3.0 abgespeichert.
+Die Änderungen am Code und den neuen Tag pusht du mittels \texttt{git push ----tags origin}.
+\item Github bietet die Möglichkeit an diese Tags auch noch Dateien anzuhängen, das wollen wir uns zu Nutze machen und die APK Datei an den Release anhängen, siehe \url{https://help.github.com/articles/creating-releases/} für genauere Informationen.
+\item Nun muss nur noch der Link auf der Webseite abgeändert werden. Der Link befindet sich natürlich in der index.html-Seite der Webseite, welche ein eigener Zweit(Branch) in GitHub ist.
+Diesen kannst du ``auschecken'' und dann lokal auf deinem Rechner bearbeiten, oder, weil es nur eine kleine Änderung ist auch in GitHub online.
+Den Link kannst du folgendermaßen erhalten.
+Gehe in GitHub im Zweig \texttt{master} auf \texttt{Veroeffentlicht}, dann auf die neue Version.
+Hier machst du einen Rechtsklick auf \text{Raw} und kopierst die URL-Adresse.
+Dies ist dann der Direktlink auf die neue Version, welche du in \texttt{index.html} einfügst.
+Falls du einen Tag erstellt hast und die APK an den Release angehängt hast, solltest du auch die URL von dieser APK nehmen.
+So ist der Ordner ``Veröffentlicht'' sogar obsolet.
  \end{enumerate}
- Glückwunsch!! Du hast jetzt eine neue Version veröffentlicht. Wenn deine Mitschüler die Option zum Überprüfen der Aktualität, dürften diese innerhalb der nächsten Woche eine Meldung erhalten.
+Glückwunsch!! Du hast jetzt eine neue Version veröffentlicht. Wenn deine Mitschüler die Option zum Überprüfen der Aktualität, dürften diese innerhalb der nächsten Woche eine Meldung erhalten.
+ 
+Falls du den Weg über den Tag und die angehängte APK Datei genommen hast, kannst du auch verfolgen, wie häufig die APK herunter geladen wurde.
+Dazu benutzen wir die API von GitHub, Informationen zum 0.5.1 Release kann man unter folgender URL einsehen \url{https://api.github.com/repos/He-Ro/Vertretungsplan-App/releases/tags/v0.5.1}.
+Mehr dazu kannst du hier finden: \url{https://developer.github.com/v3/repos/releases/}.
 
 \section{Das Projekt weitergeben}
 Wenn du dann schließlich auch das Abitur schaffst und von der Schule gehst musst du natürlich das Projekt so vorbereiten, dass es auch an jüngere Mitschüler weitergegeben werden kann. Hierzu solltest du diese Datei(\LaTeX-Datei) anpassen, sodass es den jetzigen Stand widerspiegelt, hierzu gehört auch das Eintragen in die Autorenliste, sowie in der App um ``Über''-Menü. Außerdem solltest du das Programm gut kommentieren, so wie man es immer macht!!

@@ -5,3 +5,4 @@
 *.backup
 *~
 *.toc
+*.synctex.gz
